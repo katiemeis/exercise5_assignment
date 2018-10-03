@@ -11,9 +11,10 @@
 #
 # Part 3)
 # return an additional piece of information to the stdout of part 2
-# takes the average wage for people with 12 years of education
-# takes the average wage for people who have graduated college (16 years of education or more)
-# takes the difference between the average wages between college grads high school grads with no college experience
+# takes the minimum/LOWEST wage for people with 12 years of education
+# takes the minimum/LOWEST wage for people who have graduated college (16 years of education or more)
+# takes the difference between the Lowest wages between college grads high school grads with no college experience
+# output: adding onto stdout from part 2
 
 for file in "$@"
 do 
@@ -26,7 +27,11 @@ do
 	# Part 2 (yet to be completed)
 
 	# Part 3
-	cat $file | cut -d , -f 3,4 | sort -t , -k 1 -n | grep -E ^"12" -w | cut -d , -f 2
+	wage1=$(cat $file | cut -d , -f 3,4 | sort -t , -k 1 -n | grep -E ^"12" -w | cut -d , -f 2 | head -n 1)
+	wage2=$(cat $file | cut -d , -f 3,4 | sort -t , -k 1 -n | grep -E ^"16" -w | cut -d , -f 2 | head -n 1)
+	echo "$wage2 - $wage1" | bc
+	# outputs to stdout
+
 
 done
 
