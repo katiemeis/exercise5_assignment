@@ -4,5 +4,5 @@
 
 for gender in $1
 do 
-cat $1 | cut -d , -f 1,2 | sort -t , -k 1 -k 2 | tr (,) ( ) > gye.txt
+cat $1 | sort -t , -k 1,1 -k 2,2n | tr ',' ' ' > gye.txt
 done
