@@ -3,8 +3,8 @@
 
 
 echo "highest earner"
-grep -v "gender" $1 |sort -t , -r -k 4,4n | head -n 1
+grep -v "gender" $1 |sort -t , -k 4,4nr | head -n 1
 echo "lowest earner"
 grep -v "gender" $1 | sort -t , -k 4,4n | head -n 1
 echo "top 10 females"
-grep -v "gender" $1 | sort -t , -k 1,1 -k 4,4n | head -n 10
+grep -v "gender" $1 | sort -t , -k 1,1 -k 4,4nr | head -n 10
