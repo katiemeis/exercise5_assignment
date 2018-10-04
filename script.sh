@@ -1,5 +1,5 @@
 #!/bin/bash
-#bash script.sch wages.csv 
+#bash script.sh wages.csv 
 
 cat $1 | cut -d , -f 1,2 | tr ',' ' ' | sort -t ' ' -k1,1 -k2,2 -n > $1_unique.csv
 
