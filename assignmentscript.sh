@@ -26,5 +26,8 @@ cat wages.csv | cut -d , -f 1,2,4 | sed 's/,/ /g' | sort -k3,3n | tail -n 10 | g
 
 echo "Task 3:"
 
-cat wages.csv | cut -d , -f 3,4 
-
+#prints difference between minimum wage of 16 and 12 yearsSchool
+echo "Effect of graduating college on minimum wage:"
+val1=$(cat wages.csv | cut -d , -f 3,4 | grep -E "1(2){1}\," | sort -t , -k2,2n | head -n 1 | cut -d , -f 2)
+val2=$(cat wages.csv | cut -d , -f 3,4 | grep -E "1(6){1}\," | sort -t ,  -k2,2n | head -n 1 | cut -d , -f 2)
+echo "$val2 - $val1" | bc
